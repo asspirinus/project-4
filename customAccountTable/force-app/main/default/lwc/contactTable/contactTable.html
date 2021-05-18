@@ -1,0 +1,37 @@
+<template>
+    <div class="slds-m-around_medium">
+        <div class="slds-m-bottom_small">
+            <lightning-input type="text" label="SEARCH" value={keyword} placeholder="Search by first name"
+                onchange={searchKeyword}></lightning-input>
+        </div>
+        <div class="buttons">
+            <div class="button_filter">
+                <lightning-button label="FILTER" onclick={handleSearchKeyword} variant="brand">
+                </lightning-button>
+            </div>
+
+            <div class="button_New">
+                <lightning-button label="NEW" onclick={handleNewContact} variant="brand">
+                </lightning-button>
+            </div>
+        </div>
+        <div>
+            <lightning-datatable data={data} columns={columns} key-field="Id" hide-checkbox-column
+                show-row-number-column onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+
+        <!--Delete contact modal-->
+        <c-contact-del onsuccessdelchange={hanldeSuccessDelChange}>
+
+        </c-contact-del>
+
+        <!-- New contact modal-->
+        <c-new-contact onrefreshtablechange={hanldeRefreshTableChange}>
+        </c-new-contact>
+
+        <div if:true={showLoadingSpinner} class="exampleHolder">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+    </div>
+</template>

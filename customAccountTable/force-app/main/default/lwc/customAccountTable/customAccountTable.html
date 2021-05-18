@@ -1,0 +1,17 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-p-around_small">
+            <div class="content" onitemregister={handleItemRegister}>
+                <c-custom-datatable class="slds-max-medium-table_stacked" onvaluechange={handleValueChange}
+                    oncellchange={handleCellChange} data={records} columns={columns} show-row-number-column="false"
+                    key-field="Id" draft-values={draftValues} onsave={handleSave} data-record="Id" onedit={handleEdit}
+                    hide-checkbox-column="true" oncancel={handleCancel} onrowaction={handleRowAction} suppress-bottom-bar>
+                </c-custom-datatable>
+            </div>
+        </div>
+            <div if:true={foterButtonBar} class="foterButtonBar">
+                <button class="slds-button slds-button_neutral" onclick={handleCancel}>Cancel</button>
+                <button class="slds-button slds-button_brand" onclick={handleSave}>Save</button>
+            </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,34 @@
+<template>
+    <template if:true={NewContactModal} >
+        <section  role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+         aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" size="medium"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-02" class="slds-modal__title slds-hyphenate">CREATE CONTACT</h2>
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                <lightning-record-edit-form object-api-name="Contact" onsuccess={handleSuccess} onsubmit ={handleSubmit} >
+                    <lightning-messages>
+                    </lightning-messages>
+                    <lightning-input-field field-name='AccountId'></lightning-input-field>
+                    <lightning-input-field field-name='FirstName'></lightning-input-field>
+                    <lightning-input-field field-name='LastName'></lightning-input-field>
+                    <lightning-input-field field-name='Email'></lightning-input-field>
+                    <lightning-input-field field-name='Phone'></lightning-input-field>
+
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral" onclick={closeModal}>Cancel</button>
+                        <button class="slds-button slds-button_brand" type="submit">Save</button>
+                        </footer>
+                </lightning-record-edit-form>
+            </div>
+            </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>
